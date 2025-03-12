@@ -52,6 +52,7 @@ const login =()=>{
       sessionStorage.setItem('회원아이디', res.data.userId);
       sessionStorage.setItem('회원이름', res.data.userName);
       sessionStorage.setItem('회원권한', res.data.userRoll);
+      
     
 
     }
