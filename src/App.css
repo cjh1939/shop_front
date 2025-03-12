@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: 'S-CoreDream-3Light';
+}
+
+.container{
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* 에레 메세지 디자인 */
+
+.error-msg{
+  font-size: 0.7rem !important;
+  color: red;
+  font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

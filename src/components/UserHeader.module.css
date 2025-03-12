@@ -1,0 +1,44 @@
+.header_container{
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.login_div{
+  text-align: right;
+}
+
+.login_div > span{
+  margin-left: 10px;
+}
+
+.banner_div{
+  position: relative;
+}
+
+.banner_div > img{
+  width: 100%;
+  display: block;
+  height: 25vh;
+  object-fit: cover;
+  object-position: center 80%;
+}
+
+.banner_div > p{
+  position: absolute;
+  top: 20%;
+  left: 6%;
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: 8px;
+}
+
+.menu_div{
+  padding: 8px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.menu_ul{
+  display: flex;
+  gap: 20px;
+}
+

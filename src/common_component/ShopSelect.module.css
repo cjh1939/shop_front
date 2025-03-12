@@ -1,0 +1,8 @@
+.select{
+  outline: 1px solid green;
+  border: none;
+  border-radius: 4px;
+}
+.select:foucus{
+  outline: 1.5px solid green;
+}
