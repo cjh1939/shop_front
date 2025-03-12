@@ -16,13 +16,17 @@ import ShopSelect from './common_component/ShopSelect'
 import State변경함수흐름2 from './components/practice/State변경함수흐름2'
 import State변경함수흐름3 from './components/practice/State변경함수흐름3'
 import Login from './components/Login'
+import StorageTest from './components/practice/StorageTest'
 
 function App() {
 
   return (
+
+
+
     <div className='container'>
 
-        
+        {/* <StorageTest/> */}
     
       <Routes>
         {/* 유저가 접속하는 페이지 */} 

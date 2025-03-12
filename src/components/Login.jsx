@@ -23,6 +23,7 @@ const Login = () => {
   const [loginData,setLoginData] = useState({
     userId: '',
     userPw : ''
+    
   });  
     
   const changeLoginData = (e)=>{
@@ -31,6 +32,9 @@ const Login = () => {
       [e.target.name] : e.target.value
     })
   }
+
+
+
 
 const login =()=>{
 
@@ -43,6 +47,13 @@ const login =()=>{
 
     }else{
       alert('성공');
+      //로그인에 성공하면 
+      //세션스토리지에 로그인하는 회원의 아이디,이름 권한정보를 저장한다.
+      sessionStorage.setItem('회원아이디', res.data.userId);
+      sessionStorage.setItem('회원이름', res.data.userName);
+      sessionStorage.setItem('회원권한', res.data.userRoll);
+    
+
     }
 
     
@@ -62,7 +73,7 @@ const login =()=>{
 
         <div>
           <p>아이디</p>
-          <ShopInput size=''
+          <ShopInput size='wide'
           type='text'
           name='userId'
           value={loginData.userId}
@@ -83,6 +94,7 @@ const login =()=>{
         <div>
           <ShopButton title='로그인' type='button' click={(e)=>{
             login()
+            
           }}/>
         </div>
 
