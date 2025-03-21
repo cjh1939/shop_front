@@ -3,11 +3,11 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import UserHeader from './UserHeader'
 
-const UserLayout = () => {
+const UserLayout = ({loginInfo,setLoginInfo}) => {
   return (
     <div className='user-container'>
       <div>
-        <UserHeader />  
+        <UserHeader loginInfo={loginInfo}  setLoginInfo={setLoginInfo} />  
       </div> 
       <div>
         <Outlet />  

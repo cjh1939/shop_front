@@ -4,11 +4,11 @@ import { Outlet } from 'react-router-dom'
 import styles from './AdminLayout.module.css'
 import UserHeader from './UserHeader'
 
-const AdminLayout = () => {
+const AdminLayout = ({loginInfo,setLoginInfo}) => {
   return (
     <div className={styles.admin_container}>
       <div className='admin-header'>
-        <UserHeader />
+        <UserHeader loginInfo={loginInfo} setLoginInfo={setLoginInfo} />
       </div>
       <div className={styles.admin_body}>
         <div className={styles.side_div}>

@@ -85,8 +85,7 @@ const ItemForm = () => {
         </div>
         <div>
           <p>출판사</p>
-          
-
+        
             <ShopInput 
               name='publisher' 
               value={bookData.publisher} 
@@ -111,8 +110,12 @@ const ItemForm = () => {
               name='bookInfo' 
               value={bookData.bookInfo} 
               onChange={e => changeBookData(e)}></textarea>
-
         </div>
+          <div>
+            <p>도서 이미지</p>
+            <input type='file' /> 
+          </div>
+
       </div>
       <div>
       

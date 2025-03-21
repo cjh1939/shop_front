@@ -4,6 +4,7 @@ import ShopInput from '../common_component/ShopInput'
 import ShopButton from '../common_component/ShopButton'
 import axios from 'axios'
 import { loginUser } from '../apis/userApi'
+import { data, useNavigate } from 'react-router-dom'
 
 
 /**
@@ -18,7 +19,9 @@ import { loginUser } from '../apis/userApi'
  * PS. 리액트 2번 PDF Query String 으로 전달된 데이터를 받는 방식과 일치
  * (페이지 번호 23번)
  */
-const Login = () => {
+const Login = ({setLoginInfo}) => {
+  
+  const nav = useNavigate();
   
   const [loginData,setLoginData] = useState({
     userId: '',
@@ -44,16 +47,32 @@ const login =()=>{
     //자바에서 null데이터가 넘어오면 ''(빈문자) 로 받는다.
     if(res.data == ''){
       alert('실패');
-
+      
     }else{
       alert('성공');
+
       //로그인에 성공하면 
       //세션스토리지에 로그인하는 회원의 아이디,이름 권한정보를 저장한다.
-      sessionStorage.setItem('회원아이디', res.data.userId);
-      sessionStorage.setItem('회원이름', res.data.userName);
-      sessionStorage.setItem('회원권한', res.data.userRoll);
+      // sessionStorage.setItem('회원아이디', res.data.userId);
+      // sessionStorage.setItem('회원이름', res.data.userName);
+      // sessionStorage.setItem('회원권한', res.data.userRoll);
+
+      //로그인한 회원의 아이디,이름,권한정보만 가진 객체 생성
+      const loginInfo ={
+        userId : res.data.userId,
+        userName: res.data.userName,
+        userRoll : res.data.userRoll
+      }
+
+      //loginInfo 객체를 json (객체형태로 생긴 문자열)으로 변환 후 세션에 저장     
+      //JOSN.stringify(객체) -> 객체를 문자열화 한다(josn) 한다
+      //JOSN>parse(json) -> josn 데이터를 객체로 변환한다
+      sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo)); 
+      setLoginInfo(loginInfo); //로그인 성공시 app 재랜더링
+      //로그인한 유조의 권한에 따라 이동할 페이지 지정 
       
-    
+      //일반 회원 : 상품 목록 페이지, 관리자: 상품등록 페이지 
+      nav(loginInfo.userRoll === 'USER' ? '/' : '/admin/reg-item');
 
     }
 
