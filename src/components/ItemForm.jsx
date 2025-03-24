@@ -14,6 +14,9 @@ const ItemForm = () => {
   //카테고리 목록을 저장할 변수
   const [cateList, setCateList] = useState([]);
 
+//첨부파일 input태그에서 선택한 파일을 저장할변수
+  const [firstFile,setFirstFile] = useState(null);
+
   //input 태그들에 입력한 데이터를 저장하는 변수
   const [bookData, setBookData] = useState({
     cateCode : 1,
@@ -49,6 +52,20 @@ const ItemForm = () => {
     })
     .catch(error => console.log(error));
   }
+
+const fileConfig ={Headers:{'content-Type' : 'multipart/form-data'}}
+
+
+const send =()=>{
+  const form = new FormData();
+  form.append('file',firstFile);
+
+  axios.post('/api/books/upload',form,fileConfig)
+  .then().catch()
+
+}
+
+
 
   return (
     <div className='item-form-container'>
@@ -113,7 +130,14 @@ const ItemForm = () => {
         </div>
           <div>
             <p>도서 이미지</p>
+            {/* 메인이미지, 상세이미지 */}
+            <input type='file' onChange={(e)=>{
+              console.log(e.target.files);
+              setFirstFile(e.target.files[0]);
+            }}/> 
+
             <input type='file' /> 
+            
           </div>
 
       </div>
@@ -122,7 +146,8 @@ const ItemForm = () => {
         <ShopButton 
         title='등록'
         size='small'
-        click={e => regBook()}
+        click={e => regBook(send)}
+        
         />
       </div>
     </div>
